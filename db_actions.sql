@@ -265,7 +265,7 @@ CREATE VIEW facility AS
 select * from facility;
 
 
-
+select * from blood_donor natural right join blood_donation; 
 
 
 
