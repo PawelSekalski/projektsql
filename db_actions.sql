@@ -264,9 +264,18 @@ CREATE VIEW facility AS
 
 select * from facility;
 
-
-select * from blood_donor natural right join blood_donation; 
-
-
-
-
+SELECT 
+    id_donor AS 'donor id',
+    id_donation AS 'donation id',
+    donation_date AS 'donation date',
+    blood_type_donation AS 'blood type',
+    id_bank AS 'bank id',
+    donor_firstname AS 'donor first name',
+    donor_lastname AS 'donor last name',
+    birth_date AS 'donor birth date',
+    donor_email AS 'donor email'
+FROM
+    blood_donor
+        NATURAL RIGHT JOIN
+    blood_donation
+ORDER BY id_donor; 

@@ -30,19 +30,33 @@ CREATE TABLE blood_bank (
 
 #describe blood_bank;
 
+#creating a blood bank supplies
+
+CREATE TABLE blood_bank_supplies (
+    id_supply int NOT NULL AUTO_INCREMENT,
+    blood_type_supply VARCHAR(200),
+    blood_quantity_supply INT,
+    id_bank TINYINT,
+    PRIMARY KEY (id_supply),
+    CONSTRAINT bank_supplies_fk FOREIGN KEY (id_bank)
+        REFERENCES blood_bank (id_bank)
+);
+
+#describe blood_bank_supplies;
+
 #creating a blood bonation table
 
 CREATE TABLE blood_donation (
     id_donation TINYINT NOT NULL AUTO_INCREMENT,
     donation_date DATE,
     blood_type_donation VARCHAR(6) NOT NULL,
-    blood_quantity_donation VARCHAR(20) NOT NULL,
-	id_donor TINYINT,
+    blood_quantity_donation INT NOT NULL,
+    id_donor TINYINT,
     id_bank TINYINT,
     PRIMARY KEY (id_donation),
     CONSTRAINT donor_id_fk FOREIGN KEY (id_donor)
         REFERENCES blood_donor (id_donor),
-	CONSTRAINT blood_donation_fk FOREIGN KEY (id_bank)
+    CONSTRAINT blood_donation_fk FOREIGN KEY (id_bank)
         REFERENCES blood_bank (id_bank)
 );
 
