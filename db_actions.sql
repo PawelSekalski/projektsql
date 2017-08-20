@@ -279,3 +279,6 @@ FROM
         NATURAL RIGHT JOIN
     blood_donation
 ORDER BY id_donor; 
+
+# triggers
+

@@ -2,45 +2,105 @@
 
 import pymysql
 
-class Emu:
+class EMU:
     def __init__(self):
         self.conn = pymysql.connect(host="localhost", user="root", passwd="macbook", db="blood_donation_db", charset='utf8')
         self.c = self.conn.cursor()
         print("Connection established. Welcome!")
-        print("================================\n")
+        print("\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/")
+        self.nav = ""    
+
+# ------------------------------------------------- LOGIN
+        while(self.nav !="q"):
+            self.nav = input("\nSelect user:\n(d) - donor, \n(b) - blood bank, \n(m) - medical facility, \n(q) - exit\n")
+            if(self.nav== "d"):
+                self.d_log()
+            elif(self.nav=="b"):
+                self.b_log()
+            elif(self.nav=="m"):
+                self.m_log()
+        print("\nConnection ceased!")
+        self.conn.close()
+    def d_log(self):
+        login = input("\nlogin: ")
+        v = self.c.execute("select id_donor from blood_donor where id_donor='"+login+"';")
+        if(v==0):
+            print("no such donor")
+            self.nav=""
+        else:
+            password = input("password: ")
+            i = self.c.execute("select id_donor from blood_donor where id_donor='"+login+"' and d_pass ='"+password+"';")
+            self.nav=""
+            if(i==0):
+                print("wrong password, try again")
+            else:
+                print("\nWelcome!\n")
+                self.nav="q"
+                self.menu()
+    def b_log(self):
+        login = input("\nlogin: ")
+        v = self.c.execute("select id_bank from blood_bank where id_bank='"+login+"';")
+        if(v==0):
+            print("no such bank")
+            self.nav=""
+        else:
+            password = input("password: ")
+            i = self.c.execute("select id_bank from blood_bank where id_bank='"+login+"' and b_pass ='"+password+"';")
+            if(i==0):
+                print("wrong password, try again")
+                self.nav=""
+            else:
+                print("\nWelcome!\n")
+                self.nav="q"
+                self.menu()
+    def m_log(self):
+        login = input("\nlogin: ")
+        v = self.c.execute("select id_facility from med_facility where id_facility='"+login+"';")
+        if(v==0):
+            print("no such medical facility")
+            self.nav=""
+        else:
+            password = input("password: ")
+            i = self.c.execute("select id_facility from med_facility where id_facility='"+login+"' and m_pass ='"+password+"';")
+            if(i==0):
+                print("wrong password, try again")
+                self.nav=""
+            else:
+                print("\nWelcome!\n")
+                self.nav="q"
+                self.menu()
 
 # ------------------------------------------------- MENU
-        nav = ''
-        while(nav != "q"):
-            nav = input("Menu:\n(1)-donor list,\n(2)-add new donor,\n(3)-update donor,\n(4)-donation list,\n(5)-add new donation,\n(6)-supplies,\n(7)-update supplies,\n(8)-request list,\n(9)-add new request,\n(10)-update request,\n(11)-transport list,\n(12)-medical facility list,\n(13)-blood banks list,\n(q)-exit\n")
-            if(nav == "1"):
+    def menu(self):
+        self.nav = ""
+        while(self.nav != "q"):
+            self.nav = input("\nMenu:\n(1) - donor list,\n(2) - add new donor,\n(3) - update donor,\n(4) - donation list,\n(5) - add new donation,\n(6) - supplies,\n(7) - update supplies,\n(8) - request list,\n(9) - add new request,\n(10) - update request,\n(11) - transport list,\n(12) - medical facility list,\n(13) - blood bank list,\n(q) - exit\n")
+            if(self.nav == "1"):
                 self.sdnr()
-            elif(nav == "2"):
+            elif(self.nav == "2"):
                 self.adnr()
-            elif(nav == "3"):
-                self.updnr()   
-            elif(nav == "4"):
+            elif(self.nav == "3"):
+                self.updnr()
+            elif(self.nav == "4"):
                 self.sdnt()
-            elif(nav == "5"):
+            elif(self.nav == "5"):
                 self.adnt()
-            elif(nav == "6"):
+            elif(self.nav == "6"):
                 self.ssup()
-            elif(nav == "7"):
+            elif(self.nav == "7"):
                 self.upsup()
-            elif(nav == "8"):
+            elif(self.nav == "8"):
                 self.srq()
-            elif(nav == "9"):
+            elif(self.nav == "9"):
                 self.addrq()
-            elif(nav == "10"):
+            elif(self.nav == "10"):
                 self.uprq() 
-            elif(nav == "11"):
+            elif(self.nav == "11"):
                 self.st()
-            elif(nav == "12"):
+            elif(self.nav == "12"):
                 self.sf()          
-            elif(nav == "13"):
-                self.sb()                         
-        print("Connection ceased")
-        self.conn.close()   
+            elif(self.nav == "13"):
+                self.sb()                            
 
 # ------------------------------------------------- DONOR LIST
     def sdnr(self):
@@ -94,22 +154,22 @@ class Emu:
 
 # ------------------------------------------------- UPDATE DONOR
     def updnr(self):
-        nav2 = ''
-        while(nav2 != "q"):        
-            nav2 = input("to update:\n(1)-donor id,\n(2)-first name,\n(3)-last name,\n(4)-e-mail adress,\n(5)-birth date,\n(6)-remove donor from the list,\n(q)-go back to menu\n")
-            if(nav2 == "1"):
+        self.nav = ""
+        while(self.nav != "b"):        
+            self.nav = input("\nUpdate:\n(1) - donor id,\n(2) - first name,\n(3) - last name,\n(4) - e-mail adress,\n(5) - birth date,\n(6) - remove donor from the list,\n(b) - go back to menu\n")
+            if(self.nav == "1"):
                 self.did()
-            elif(nav2 == "2"):
+            elif(self.nav == "2"):
                 self.dfn()
-            elif(nav2 == "3"):
+            elif(self.nav == "3"):
                 self.dln()
-            elif(nav2 == "4"):
+            elif(self.nav == "4"):
                 self.de()
-            elif(nav2 == "5"):
+            elif(self.nav == "5"):
                 self.dbd()
-            elif(nav2 == "6"):
+            elif(self.nav == "6"):
                 self.drmv()
-        self.conn.close()
+        self.menu()
     def did(self):
         self.c.execute("""UPDATE blood_donor SET id_donor=%s WHERE id_donor=%s""", (input('\nset new id: '), input("current id: ")))
         self.conn.commit()
@@ -171,12 +231,13 @@ class Emu:
 
 # ------------------------------------------------- UPDATE SUPPLY LIST
     def upsup(self):
-        nav3 = ''
-        while(nav3 != "q"):        
-            nav3 = input("(1)-update supplies,\n(q)-go back to main menu\n")
-            if(nav3 == "1"):
+        self.nav = ""
+        print("\nUpdate:")
+        while(self.nav != "b"):        
+            self.nav = input("(1) - update supplies,\n(b) - go back to main menu\n")
+            if(self.nav == "1"):
                 self.us()
-        self.conn.close()
+        self.menu()
     def us(self):
         self.c.execute("""UPDATE blood_bank_supplies SET blood_quantity_supply=%s WHERE blood_type_supply=%s and id_bank=%s""", (input("\nset new quantity (ml): "), input("enter blood type: "), input("enter bank id: ")))
         self.conn.commit()
@@ -206,22 +267,22 @@ class Emu:
 
 # ------------------------------------------------- UPDATE DONOR
     def uprq(self):
-        nav4 = ''
-        while(nav4 != "q"):        
-            nav4 = input("to update:\n(1)-blood type,\n(2)-blood quantity,\n(3)-request date,\n(4)-facility id,\n(5)-bank id,\n(6)-remove request from the list,\n(q)-go back to menu\n")
-            if(nav4 == "1"):
+        self.nav = ""
+        while(self.nav != "b"):        
+            self.nav = input("\nUpdate:\n(1) - blood type,\n(2) - blood quantity,\n(3) - request date,\n(4) - facility id,\n(5) - bank id,\n(6) - remove request from the list,\n(b) - go back to menu\n")
+            if(self.nav == "1"):
                 self.rt()
-            elif(nav4 == "2"):
+            elif(self.nav == "2"):
                 self.rq()
-            elif(nav4 == "3"):
+            elif(self.nav == "3"):
                 self.rd()
-            elif(nav4 == "4"):
+            elif(self.nav == "4"):
                 self.rf()
-            elif(nav4 == "5"):
+            elif(self.nav == "5"):
                 self.rb()
-            elif(nav4 == "6"):
+            elif(self.nav == "6"):
                 self.delr()
-        self.conn.close()
+        self.menu()
     def rt(self):
         self.c.execute("""UPDATE blood_request SET request_type=%s WHERE id_request=%s""", (input('\nset new blood type: '), input("request id: ")))
         self.conn.commit()
@@ -285,5 +346,5 @@ class Emu:
             print("%-5s %-90s %-40s" % (id_bank, bank_name, bank_adress))
         print("\n")
 
-start = Emu()
+start = EMU()
 

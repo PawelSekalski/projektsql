@@ -12,6 +12,7 @@ CREATE TABLE blood_bank (
     id_bank TINYINT NOT NULL,
     bank_name VARCHAR(200),
     bank_adress VARCHAR(20),
+    b_pass VARCHAR(20),
     PRIMARY KEY (id_bank)
 );
 
@@ -41,6 +42,7 @@ CREATE TABLE blood_donor (
     donor_lastname VARCHAR(30) NOT NULL,
     donor_email VARCHAR(45) NOT NULL UNIQUE,
     birth_date DATE,
+	d_pass VARCHAR (20),
     id_donation TINYINT,
     PRIMARY KEY (id_donor),
     CONSTRAINT donation_id_fk FOREIGN KEY (id_donation)
@@ -70,6 +72,7 @@ CREATE TABLE med_facility (
     id_facility TINYINT NOT NULL AUTO_INCREMENT,
     facility_name VARCHAR(200),
     facility_adress VARCHAR(20),
+	m_pass VARCHAR (20),
     PRIMARY KEY (id_facility)
 );
 

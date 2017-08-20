@@ -1,37 +1,37 @@
 # adding values to blood donor table
 
-INSERT INTO blood_donor (donor_firstname, donor_lastname, donor_email, birth_date) values ('Arwid', 'Tomaszewski', 'a@mail.com', '1990-04-11'),
-('Krzesimir', 'Fronc', 'b@mail.com', '1993-09-09'),
-('Gaia', 'Czarnota', 'c@mail.com', '1970-01-18'),
-('Ismena', 'Kwaśnik', 'd@mail.com', '1991-06-25'),
-('Bohdan', 'Majcherek', 'e@mail.com', '1986-03-30'),
-('Rachela', 'Ester', 'f@mail.com', '1985-09-11'),
-('Blanca', 'Inglot', 'g@mail.com', '1987-07-01'),
-('Alwin', 'Polakowski', 'h@mail.com', '1960-07-23'),
-('Wiesław', 'Basta', 'i@mail.com', '1992-10-28'),
-('Medard', 'Łyszek', 'j@mail.com', '1963-04-17'),
-('Sofija', 'Joniec', 'k@mail.com', '1950-06-19'),
-('Pamela', 'Jońca', 'l@mail.com', '1999-03-08'),
-('Megan', 'Drapała', 'm@mail.com', '1978-07-26'),
-('Raisa', 'Piela', 'nx@mail.com', '1996-11-22'),
-('Hieronim', 'Ptak', 'o@mail.com', '1969-06-13'),
-('Jovan', 'Chwiałkowski', 'p@mail.com', '1973-07-16'),
-('Lubomir', 'Bogacz', 'q@mail.com', '1992-10-07'),
-('Waleria', 'Gniewek', 'r@mail.com', '1988-04-10'),
-('Noelia', 'Binik', 's@mail.com', '1986-06-29'),
-('Euzebiusz', 'Smorc', 't@mail.com', '1984-04-27'),
-('Nadzieja', 'Smoleńska', 'u@mail.com', '1998-11-04'),
-('Aureliusz', 'Marek', 'w@mail.com', '1977-07-11'),
-('Arlena', 'Bagiet', 'x@mail.com', '1980-06-01'),
-('Chima', 'Kuła', 'y@mail.com', '1971-04-20'),
-('Goran', 'Bregowicz', 'z@mail.com', '1979-08-09');
+INSERT INTO blood_donor (donor_firstname, donor_lastname, donor_email, birth_date, d_pass) values ('Arwid', 'Tomaszewski', 'a@mail.com', '1990-04-11', 'null'),
+('Krzesimir', 'Fronc', 'b@mail.com', '1993-09-09', 'null'),
+('Gaia', 'Czarnota', 'c@mail.com', '1970-01-18', 'null'),
+('Ismena', 'Kwaśnik', 'd@mail.com', '1991-06-25', 'null'),
+('Bohdan', 'Majcherek', 'e@mail.com', '1986-03-30', 'null'),
+('Rachela', 'Ester', 'f@mail.com', '1985-09-11', 'null'),
+('Blanca', 'Inglot', 'g@mail.com', '1987-07-01', 'null'),
+('Alwin', 'Polakowski', 'h@mail.com', '1960-07-23', 'null'),
+('Wiesław', 'Basta', 'i@mail.com', '1992-10-28', 'null'),
+('Medard', 'Łyszek', 'j@mail.com', '1963-04-17', 'null'),
+('Sofija', 'Joniec', 'k@mail.com', '1950-06-19', 'null'),
+('Pamela', 'Jońca', 'l@mail.com', '1999-03-08', 'null'),
+('Megan', 'Drapała', 'm@mail.com', '1978-07-26', 'null'),
+('Raisa', 'Piela', 'nx@mail.com', '1996-11-22', 'null'),
+('Hieronim', 'Ptak', 'o@mail.com', '1969-06-13', 'null'),
+('Jovan', 'Chwiałkowski', 'p@mail.com', '1973-07-16', 'null'),
+('Lubomir', 'Bogacz', 'q@mail.com', '1992-10-07', 'null'),
+('Waleria', 'Gniewek', 'r@mail.com', '1988-04-10', 'null'),
+('Noelia', 'Binik', 's@mail.com', '1986-06-29', 'null'),
+('Euzebiusz', 'Smorc', 't@mail.com', '1984-04-27', 'null'),
+('Nadzieja', 'Smoleńska', 'u@mail.com', '1998-11-04', 'null'),
+('Aureliusz', 'Marek', 'w@mail.com', '1977-07-11', 'null'),
+('Arlena', 'Bagiet', 'x@mail.com', '1980-06-01', 'null'),
+('Chima', 'Kuła', 'y@mail.com', '1971-04-20', 'null'),
+('Goran', 'Bregowicz', 'z@mail.com', '1979-08-09', 'null');
 
 SELECT * FROM blood_donor;
 
 # adding values to blood bank table
 
-INSERT INTO blood_bank (id_bank, bank_name, bank_adress) values (1, 'Ogólnopolski Bank Komórek Macierzystych S.A.', 'Poznań'),
-(2, 'Regionalne Centrum Krwiodawstwa i Krwiolecznictwa. Oddział Terenowy nr 12 Warszawie', 'Warszawa');
+INSERT INTO blood_bank (id_bank, bank_name, bank_adress, b_pass) values (1, 'Ogólnopolski Bank Komórek Macierzystych S.A.', 'Poznań', 'null'),
+(2, 'Regionalne Centrum Krwiodawstwa i Krwiolecznictwa. Oddział Terenowy nr 12 Warszawie', 'Warszawa', 'null');
 
 SELECT * FROM blood_bank;
 
@@ -67,15 +67,15 @@ SELECT * FROM blood_donation;
 
 # adding values to medical facility table
 
-insert into med_facility (facility_name, facility_adress) values ('Szpital nr 2 w Lublinie', 'Lublin'),
-('Szpital nr 13 w Warszawie', 'Warszawa'),
-('Szpital nr 1 w Krakowie', 'Kraków'),
-('Szpital nr 6 w Olsztynie', 'Olsztyn'),
-('Szpital nr 2 w Nowym Sączu', 'Nowy Sącz'),
-('Szpital nr 1 we Wrocławiu', 'Wrocław'),
-('Szpital nr 3 w Gdańsku', 'Gdańsk'),
-('Szpital nr 9 w Szczecinie', 'Szczecin'),
-('Szpital nr 2 w Poznaniu', 'Poznań');
+insert into med_facility (facility_name, facility_adress, m_pass) values ('Szpital nr 2 w Lublinie', 'Lublin', 'null'),
+('Szpital nr 13 w Warszawie', 'Warszawa', 'null'),
+('Szpital nr 1 w Krakowie', 'Kraków', 'null'),
+('Szpital nr 6 w Olsztynie', 'Olsztyn', 'null'),
+('Szpital nr 2 w Nowym Sączu', 'Nowy Sącz', 'null'),
+('Szpital nr 1 we Wrocławiu', 'Wrocław', 'null'),
+('Szpital nr 3 w Gdańsku', 'Gdańsk', 'null'),
+('Szpital nr 9 w Szczecinie', 'Szczecin', 'null'),
+('Szpital nr 2 w Poznaniu', 'Poznań', 'null');
 
 SELECT * FROM med_facility;
 
